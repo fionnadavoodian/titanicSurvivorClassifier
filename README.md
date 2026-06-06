@@ -2,7 +2,7 @@
 
 Logistic regression built from scratch using only NumPy — no sklearn, no shortcuts.
 
-**84.3% Accuracy | 0.79 F1**
+**85.5% Accuracy | 0.79 F1**
 
 ---
 
@@ -27,7 +27,7 @@ The raw data needed some work before it was useful:
 
 - **Weighted loss** — 62% of passengers didn't survive so the dataset is imbalanced. I added a survival weight in the cross-entropy loss so the model doesn't just learn to predict "not survived" for everyone
 - **L2 regularization** — penalizes large weights to reduce overfitting. The bias is excluded because it just shifts the baseline, it's not part of the model's complexity
-- **Threshold = 0.3** — default 0.5 missed too many survivors. Lowering it improves recall at the cost of some precision, which makes more sense for this problem
+- **Threshold = 0.5** — After adding L2 regularization the model became confident enough that the default threshold works well, giving better accuracy and precision without sacrificing much recall
 - **Normalization** — scaled using training set stats only, applied the same transform to test. Computing it on the full dataset would be leakage
 
 ---
@@ -36,10 +36,10 @@ The raw data needed some work before it was useful:
 
 | Metric    | Score  |
 | --------- | ------ |
-| Accuracy  | 0.8435 |
-| Precision | 0.7835 |
-| Recall    | 0.7917 |
-| F1        | 0.7876 |
+| Accuracy  | 0.8550 |
+| Precision | 0.8222 |
+| Recall    | 0.7708 |
+| F1        | 0.7957 |
 
 ---
 
